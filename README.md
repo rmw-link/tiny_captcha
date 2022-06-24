@@ -1,6 +1,8 @@
 <!-- 本文件由 ./make.md 自动生成，请不要直接修改此文件 -->
 
-# tiny_captcha
+# tiny_captcha : rust 轻量级验证码生成器，可以编译成 wasm
+
+[项目文档](https://docs.rs/tiny_captcha)
 
 轻量级验证码生成器，仅依赖于 rand 和 gif ，可以编译成 wasm 。
 

@@ -132,7 +132,7 @@ unsafe fn blur(im: *mut u8) {
         .wrapping_add(c12)
         .wrapping_add(c21)
         .wrapping_add(c22)
-        .wrapping_div(4 as u32) as u8;
+        .wrapping_div(4_u32) as u8;
       x += 1
     }
     y += 1

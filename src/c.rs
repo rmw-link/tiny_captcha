@@ -89,20 +89,18 @@ unsafe fn letter(n: i32, pos: i32, im: *mut u8, swr: *mut u8, s1: u8, s2: u8) ->
 }
 
 unsafe fn line(im: *mut u8, swr: *mut u8, s1: u8) {
-  let mut x: i32;
+  let mut x: i32 = 0;
   let mut sk1: i32 = s1 as i32;
-  x = 0_i32;
-  while x < 199_i32 {
-    if sk1 >= 200_i32 {
-      sk1 %= 200_i32
+  while x < 199 {
+    if sk1 >= 200 {
+      sk1 %= 200
     }
-    let skew: i32 = sw[sk1 as usize] as i32 / 16_i32;
-    sk1 += *swr.offset(x as isize) as i32 & (0x3_i32 + 1_i32);
-    let i: *mut u8 = im.offset((200_i32 * (45_i32 + skew) + x) as isize);
+    let skew: i32 = sw[sk1 as usize] as i32 / 16;
+    sk1 += *swr.offset(x as isize) as i32 & (0x3 + 1);
+    let i: *mut u8 = im.offset((200 * (45 + skew) + x) as isize);
     *i.offset(0) = 0;
-    *i.offset(1) = 0;
+    *i.offset(50) = 0;
     *i.offset(200) = 0;
-    *i.offset(201) = 0;
     x += 1
   }
 }
@@ -112,10 +110,7 @@ unsafe fn dots(im: *mut u8) {
     let v: u32 = random();
     let i: *mut u8 = im.offset(v.wrapping_rem(200 * 67) as isize);
     *i.offset(0) = 0xff;
-    *i.offset(1) = 0xff;
-    *i.offset(2) = 0xff;
-    *i.offset(200) = 0xff;
-    *i.offset(201) = 0xff;
+    *i.offset(100) = 0xff;
     *i.offset(202) = 0xff;
     n += 1
   }

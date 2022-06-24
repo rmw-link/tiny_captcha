@@ -56,3 +56,9 @@ The output is shown :
 输出展示 :
 
 ![](./gif/1.gif) ![](./gif/2.gif) ![](./gif/3.gif) ![](./gif/4.gif) ![](./gif/5.gif) ![](./gif/6.gif) ![](./gif/7.gif) ![](./gif/8.gif) ![](./gif/9.gif) ![](./gif/10.gif)
+
+### 关于
+
+本项目隶属于 **人民网络 ([rmw.link](//rmw.link))** 代码计划。
+
+![人民网络](https://raw.githubusercontent.com/rmw-link/logo/master/rmw.red.bg.svg)

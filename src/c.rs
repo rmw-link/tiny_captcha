@@ -98,9 +98,13 @@ unsafe fn line(im: *mut u8, swr: *mut u8, s1: u8) {
     let skew: i32 = sw[sk1 as usize] as i32 / 16;
     sk1 += *swr.offset(x as isize) as i32 & (0x3 + 1);
     let i: *mut u8 = im.offset((200 * (45 + skew) + x) as isize);
-    *i.offset(0) = 0;
-    *i.offset(50) = 0;
-    *i.offset(200) = 0;
+
+    if skew % 5 != 0 {
+      *i.offset(0) = 0;
+    }
+    if skew % 7 != 0 {
+      *i.offset(125) = 0;
+    }
     x += 1
   }
 }
@@ -188,7 +192,7 @@ pub unsafe fn captcha() -> ([u8; 6], [u8; IMG_SIZE]) {
   *fresh6 = (*fresh6 as i32 % 25) as u8;
   let fresh7 = &mut (*l.offset(5));
   *fresh7 = (*fresh7 as i32 % 25) as u8;
-  let mut p: i32 = 10;
+  let mut p: i32 = (s1 % 7) as i32 + 3;
   p = letter(*l.offset(0) as i32, p, im, swr.as_mut_ptr(), s1, s2);
   p = letter(*l.offset(1) as i32, p, im, swr.as_mut_ptr(), s1, s2);
   p = letter(*l.offset(2) as i32, p, im, swr.as_mut_ptr(), s1, s2);
